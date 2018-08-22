@@ -1,9 +1,11 @@
 import re
 
 def findFiles(folder_name, html):
-    raw_files = re.findall(r"%s/[A-Za-z1-9_&*]+.[A-Za-z]+" % folder_name, html)
+    raw_files = re.findall(r"%s/[A-Za-z1-9_&-]+.[A-Za-z]+" % folder_name, html)
     files = []
     for fl in raw_files:
+        if '.' not in fl:
+            continue
         temp = fl.split('/')[-1]
         files.append(temp)
 
@@ -26,10 +28,20 @@ def getCode(html):
                 if check:
                     code += char
     
+            if "&quot;" in code:
+                code = code.replace("&quot;", '"')
+            elif "&#39;" in code:
+                code = code.replace("&#39;", "'")
+            elif "&gt;" in code:
+                code = code.replace("&gt;", '>')
+            elif "&lt;" in code:
+                code = code.replace("&lt;", '<')
+            elif "&amp;" in code:
+                code = code.replace("&amp;", '&')
             code += '\n'
 
     return code
 
 def findFolders(url, html):
     sub_folder = url[19:]
-    return re.findall(r"%s/[A-Za-z]+" % (sub_folder), html)
+    return re.findall(r"%s/[A-Za-z1-9_&-]+" % (sub_folder), html)

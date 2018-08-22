@@ -40,7 +40,7 @@ def writeFile(url, files, folder):
             fl_count += 1
             print(" Folder {} Files: [{}/{}] downloaded.\r".format(folder, fl_count, fl_quant), end="")
     
-    print("\n\n")
+    print()
     
     return 0
 
