@@ -45,7 +45,6 @@ def writeFile(url, files, folder):
     return 0
 
 def main():
-    # url = "https://github.com/geekcomputers/Python/tree/master/primelib"
     argv = sys.argv[1:]
     if not len(argv):
         print("usage:\npython gitFolder.py https://github/[user]/[repository]/[folder name]\n")
