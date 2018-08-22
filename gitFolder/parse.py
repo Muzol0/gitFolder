@@ -28,7 +28,7 @@ def getCode(html):
                 if check:
                     code += char
     
-            if "&quot;" in code:
+            if '&quot;' in code:
                 code = code.replace('&quot;', '"')
             elif "&#39;" in code:
                 code = code.replace("&#39;", "'")
