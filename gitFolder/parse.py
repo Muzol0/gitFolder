@@ -29,7 +29,7 @@ def getCode(html):
                     code += char
     
             if "&quot;" in code:
-                code = code.replace("&quot;", '"')
+                code = code.replace('&quot;', '"')
             elif "&#39;" in code:
                 code = code.replace("&#39;", "'")
             elif "&gt;" in code:
